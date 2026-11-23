@@ -1,0 +1,41 @@
+// Sofle Choc GbrTzT V2 - RP2040 - USB em qualquer metade
+#pragma once
+
+// Requer os UF2 separados para esquerda/direita, gerados pelo script.
+#define EE_HANDS
+#define SPLIT_USB_DETECT
+#define SPLIT_USB_TIMEOUT 10000
+#define SPLIT_USB_TIMEOUT_POLL 10
+#define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_LED_STATE_ENABLE
+
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
+
+// OLED 128x32 em ambos os lados, com nome de ate 7 caracteres e imagens.
+#define OLED_DISPLAY_ADDRESS 0x3C
+#define OLED_TIMEOUT 0
+
+// LEDs originais da PCB Sofle Choc: 29 por metade / 58 no total.
+#define RGB_MATRIX_LED_COUNT 58
+#define RGB_MATRIX_SPLIT { 29, 29 }
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100
+#define RGB_MATRIX_DEFAULT_VAL 60
+#define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
+#define RGB_MATRIX_DEFAULT_HUE 0
+#define RGB_MATRIX_DEFAULT_SAT 255
+#define RGB_MATRIX_KEYPRESSES
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGB_MATRIX_SLEEP
+#define SPLIT_TRANSPORT_MIRROR
+
+// O fork GbrTzT Vial Web encaminha subcomandos customizados 0x45,46,48,52,53,55.
+#define VIA_CUSTOM_LIGHTING_ENABLE
+
+// 8192 bytes de EEPROM emulada na flash dos RP2040.
+#define WEAR_LEVELING_BACKING_SIZE 16384
+#define WEAR_LEVELING_LOGICAL_SIZE 8192
+// 1+8+10*6+10*8+10*3+10*58*3+2 = 1921 bytes.
+#define EECONFIG_USER_DATA_SIZE 1921
+#define EECONFIG_USER_DATA_VERSION 1
+#define SPLIT_TRANSACTION_IDS_USER OLED_CONFIG_SYNC, RGB_INDICATOR_SYNC
